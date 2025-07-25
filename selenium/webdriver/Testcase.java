@@ -14,7 +14,7 @@ public class Testcase {
   public void beforeClass() {
 	  //driver= new FirefoxDriver();
 	  driver= new ChromeDriver();
-	  driver.get("https://demo.guru99.com/test/login.html");
+	  //driver.get("https://demo.guru99.com/test/login.html");
 	  
   }
   @Test
