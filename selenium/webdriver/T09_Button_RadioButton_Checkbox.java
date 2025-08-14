@@ -86,18 +86,34 @@ public class T09_Button_RadioButton_Checkbox {
 	  Assert.assertTrue(isElementSelected(petrol2Radio));
 	  
   }
-  @Test
+  
   public void TC02_CheckboxRadio_Custom() {
 	  driver.get("https://material.angular.io/components/radio/examples");
 	  WebElement autumRadioInput=driver.findElement(By.xpath("//label[text()='Summer']/preceding-sibling::div"));
 	  clickByJS(autumRadioInput);
 	  sleepInSecond(3);
-	  Assert.assertFalse(isElementSelected(autumRadioInput));
+	  Assert.assertTrue(isElementSelected(autumRadioInput));
 	  
   }
-  
-  public void TestCase() {
-	  
+  @Test
+  public void TC02_CheckboxRadio_Custom_() {
+	  driver.get("https://material.angular.io/components/checkbox/examples");
+	  //Checked
+	  WebElement checkedCheckboxInput=driver.findElement(By.xpath("//label[text()='Checked']/preceding-sibling::div/child::input"));
+	  clickByJS(checkedCheckboxInput);
+	  sleepInSecond(3);
+	  Assert.assertTrue(isElementSelected(checkedCheckboxInput));
+	  clickByJS(checkedCheckboxInput);
+	  sleepInSecond(3);
+	  Assert.assertFalse(isElementSelected(checkedCheckboxInput));
+	  //Indeterminate
+	  WebElement indeterminateCheckboxInput=driver.findElement(By.xpath("//label[text()='Indeterminate']/preceding-sibling::div/child::input"));
+	  clickByJS(indeterminateCheckboxInput);
+	  sleepInSecond(3);
+	  Assert.assertTrue(isElementSelected(indeterminateCheckboxInput));
+	  clickByJS(indeterminateCheckboxInput);
+	  sleepInSecond(3);
+	  Assert.assertFalse(isElementSelected(indeterminateCheckboxInput));
   }
   //common
   public boolean isElementEnabled(By by) {
