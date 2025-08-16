@@ -2,6 +2,8 @@ package webdriver;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -95,8 +97,8 @@ public class T09_Button_RadioButton_Checkbox {
 	  Assert.assertTrue(isElementSelected(autumRadioInput));
 	  
   }
-  @Test
-  public void TC02_CheckboxRadio_Custom_() {
+  
+  public void TC03_CheckboxRadio_Custom_() {
 	  driver.get("https://material.angular.io/components/checkbox/examples");
 	  //Checked
 	  WebElement checkedCheckboxInput=driver.findElement(By.xpath("//label[text()='Checked']/preceding-sibling::div/child::input"));
@@ -115,6 +117,57 @@ public class T09_Button_RadioButton_Checkbox {
 	  sleepInSecond(3);
 	  Assert.assertFalse(isElementSelected(indeterminateCheckboxInput));
   }
+  
+  public void TC04_SelectAllCheckbox() {
+	driver.get("https://automationfc.github.io/multiple-fields/");
+	List<WebElement> checkboxsAll=driver.findElements(By.xpath("//input[@type='checkbox']"));
+	//check
+	for (WebElement checkbox : checkboxsAll) {
+		if (!isElementSelected(checkbox)) {
+			checkbox.click();
+			//sleepInSecond(1);
+		}
+		Assert.assertTrue(isElementSelected(checkbox));
+	}
+	//uncheck
+	for (WebElement checkbox : checkboxsAll) {
+		if (isElementSelected(checkbox)) {
+			checkbox.click();
+			//sleepInSecond(1);
+		}
+		Assert.assertFalse(isElementSelected(checkbox));
+	}
+	WebElement heartAttackCheckboxInput=driver.findElement(By.xpath("//label[contains(text(),'Heart Attack')]/preceding-sibling::input"));
+	heartAttackCheckboxInput.click();
+	 Assert.assertTrue(isElementSelected(heartAttackCheckboxInput));
+	 sleepInSecond(2);
+}
+  
+  public void TC05_ubuntu_RadioCustom() {
+	driver.get("https://login.ubuntu.com/");
+	WebElement newUserRadioInput=driver.findElement(By.xpath("//input[@id='id_new_user']"));
+	clickByJS(newUserRadioInput);
+	sleepInSecond(2);
+	Assert.assertTrue(isElementSelected(newUserRadioInput));
+	//
+	WebElement acceptCheckboxInput=driver.findElement(By.id("id_accept_tos"));
+	clickByJS(acceptCheckboxInput);
+	sleepInSecond(2);
+	Assert.assertTrue(isElementSelected(acceptCheckboxInput));
+}
+  @Test
+public void TC06_CustomCheckboxRadio() {
+	driver.get("https://docs.google.com/forms/d/e/1FAIpQLSfiypnd69zhuDkjKgqvpID9kwO29UCzeCVrGGtbNPZXQok0jA/viewform");
+	WebElement canthoRadioButonInput=driver.findElement(By.xpath("//span[text()='Cần Thơ']//ancestor::div[@class='YEVVod']"));
+	Assert.assertFalse(isElementSelected(canthoRadioButonInput));
+	sleepInSecond(3);
+	clickByJS(canthoRadioButonInput);
+	sleepInSecond(2);
+	Assert.assertFalse(isElementSelected(canthoRadioButonInput));
+}
+public void TC07() {
+	
+}
   //common
   public boolean isElementEnabled(By by) {
 	WebElement element=driver.findElement(by);
