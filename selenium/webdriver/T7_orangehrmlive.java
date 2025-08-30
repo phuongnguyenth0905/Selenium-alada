@@ -97,13 +97,9 @@ public class T7_orangehrmlive {
 	  //edit Edit Immigration
 	  driver.findElement(By.xpath("//div[text()='Passport']/ancestor::div[@class='oxd-table-row oxd-table-row--with-border']//child::button[2]")).click();
 	  
-	  WebElement numberInput = wait.until(ExpectedConditions.presenceOfElementLocated(numberTextbox));
-	  wait.until(ExpectedConditions.attributeToBeNotEmpty(numberInput, "value"));
-	  Assert.assertEquals(numberInput.getAttribute("value"), numberImmigration);
+	  verifyElementValue(numberTextbox, numberImmigration);
 	  
-	  WebElement commentInput = wait.until(ExpectedConditions.presenceOfElementLocated(commentTextbox));
-	  wait.until(ExpectedConditions.attributeToBeNotEmpty(commentInput, "value"));
-	  Assert.assertEquals(commentInput.getAttribute("value"), commentImmigration);
+	  verifyElementValue(commentTextbox, commentImmigration);
 	  
 	  //logout
 	  driver.findElement(By.xpath("//span[@class='oxd-userdropdown-tab']")).click();
@@ -115,35 +111,29 @@ public class T7_orangehrmlive {
 	  driver.findElement(By.xpath("//button[@type='submit']")).click();
 	  driver.findElement(By.xpath("//span[text()='My Info']")).click();
 	  
-	  WebElement firstNameInput = wait.until(ExpectedConditions.presenceOfElementLocated(firstNameTextbox));
-	  wait.until(ExpectedConditions.attributeToBeNotEmpty(firstNameInput, "value"));
-	  Assert.assertEquals(firstNameInput.getAttribute("value"), firstName);
-	  //Assert.assertEquals(driver.findElement(firstNameTextbox).getAttribute("value"), firstName);
+	  verifyElementValue(firstNameTextbox, firstName);
 	  
 	  Assert.assertEquals(driver.findElement(middleNameTextbox).getAttribute("value"), middleName);
 	  Assert.assertEquals(driver.findElement(lastNameTextbox).getAttribute("value"), lastName);
 	  
 	  
-	  WebElement employeeIdInput = wait.until(ExpectedConditions.presenceOfElementLocated(employeeIdTextbox));
-	  wait.until(ExpectedConditions.attributeToBeNotEmpty(employeeIdInput, "value"));
-	  Assert.assertEquals(employeeIdInput.getAttribute("value"), employeeId);
-	  // Assert.assertEquals(driver.findElement(employeeIdTextbox).getAttribute("value"), employeeId);
+	  verifyElementValue(employeeIdTextbox, employeeId);
 		
 	  driver.findElement(By.xpath("//a[text()='Immigration']")).click();
 	  driver.findElement(By.xpath("//div[text()='Passport']/ancestor::div[@class='oxd-table-row oxd-table-row--with-border']//child::button[2]")).click();
 	  
 	 
-	  WebElement numberInput2 = wait.until(ExpectedConditions.presenceOfElementLocated(numberTextbox));
-	  wait.until(ExpectedConditions.attributeToBeNotEmpty(numberInput2, "value"));
-	  Assert.assertEquals(numberInput2.getAttribute("value"), numberImmigration);
+	  verifyElementValue(numberTextbox, numberImmigration);
 	  
-	  WebElement commentInput2 = wait.until(ExpectedConditions.presenceOfElementLocated(commentTextbox));
-	  wait.until(ExpectedConditions.attributeToBeNotEmpty(commentInput2, "value"));
-	  Assert.assertEquals(commentInput2.getAttribute("value"), commentImmigration);
-	 
-	  
-	  
+	  verifyElementValue(commentTextbox, commentImmigration);
+	 	  
   }
+  public void verifyElementValue(By locator, String expectedValue) {
+	  
+	  WebElement elementwait = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+	  wait.until(ExpectedConditions.attributeToBeNotEmpty(elementwait, "value"));
+	  Assert.assertEquals(elementwait.getAttribute("value"), expectedValue);
+}
   public int getRandomNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);

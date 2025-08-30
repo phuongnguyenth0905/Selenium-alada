@@ -41,7 +41,7 @@ public class T09_Alert {
 	  Assert.assertEquals(driver.findElement(resultText).getText(), "You clicked an alert successfully");
   }
   
-  public void TC02_ConfirmAlert() {
+  public void TC02_ConfirmAlert() {//yes/No
 	  driver.get("https://automationfc.github.io/basic-form/index.html");
 	  driver.findElement(By.xpath("//button[text()='Click for JS Confirm']")).click();
 	  explicitWait.until(ExpectedConditions.alertIsPresent());

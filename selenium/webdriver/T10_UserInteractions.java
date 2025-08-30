@@ -41,7 +41,7 @@ public class T10_UserInteractions {
 	  jsExecutor=(JavascriptExecutor)driver;
 	  driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(50));
 	  driver.manage().window().maximize();
-	  
+	 
   }
   //@Test
   public void TC01_HoverToElement_Tooltip() {
