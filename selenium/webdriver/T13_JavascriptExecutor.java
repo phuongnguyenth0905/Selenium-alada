@@ -336,7 +336,7 @@ public class T13_JavascriptExecutor {
 		sleepInSecond(7);
 		Assert.assertEquals(errorEmail, "Please include an '@' in the email address. '123' is missing an '@'.");
 	}
-	@Test
+	
 	public void TC03_JavascriptExecutor_HTML5_pexels() {
 		driver.get("https://www.pexels.com/vi-vn/join-contributor/");
 		highlightElement("(//span[contains(text(),'chia sẻ nội dung')])[1]");
@@ -364,9 +364,41 @@ public class T13_JavascriptExecutor {
 		clickToElementByJS("//span[text()='Đăng nhập']");
 		sleepInSecond(9);
 	}
-	public void TC03_JavascriptExecutor_HTML5() {
-		driver.get("");
-		
+	@Test
+	public void TC04_JavascriptExecutor_techpanda() {
+		driver.get("http://live.techpanda.org/");
+		highlightElement("//span[@class='label'][normalize-space()='Account']");
+		clickToElementByJS("//span[@class='label'][normalize-space()='Account']");
+		highlightElement("//div[@id='header-account']//a[@title='My Account'][normalize-space()='My Account']");
+		clickToElementByJS("//div[@id='header-account']//a[@title='My Account'][normalize-space()='My Account']");
+		//step3
+		highlightElement("//a[@title='Create an Account']");
+		clickToElementByJS("//a[@title='Create an Account']");
+		//input valid
+		highlightElement("//input[@id='firstname']");
+		senkeyToElementByJS("//input[@id='firstname']", "Automation ");
+		highlightElement("//input[@id='middlename']");
+		senkeyToElementByJS("//input[@id='middlename']", "G");
+		highlightElement("//input[@id='lastname']");
+		senkeyToElementByJS("//input[@id='lastname']", "Test");
+		highlightElement("//input[@id='email_address']");
+		senkeyToElementByJS("//input[@id='email_address']", generateEmail());
+		highlightElement("//input[@id='password']");
+		senkeyToElementByJS("//input[@id='password']", "123456");
+		highlightElement("//input[@id='confirmation']");
+		senkeyToElementByJS("//input[@id='confirmation']", "123456");
+		highlightElement("//button[@title='Register']");
+		clickToElementByJS("//button[@title='Register']");
+		clickToElementByJS("//button[text()='Send anyway']");
+		String messageSuccess=getElement(driver, "//span[contains(text(),'Thank you')]").getText();
+		Assert.assertEquals(messageSuccess, "Thank you for registering with Main Website Store.");
+		//logout
+		highlightElement("//span[@class='label'][normalize-space()='Account']");
+		clickToElementByJS("//span[@class='label'][normalize-space()='Account']");
+		highlightElement("//a[normalize-space()='Log Out']");
+		clickToElementByJS("//a[normalize-space()='Log Out']");
+		driver.navigate().forward();
+		sleepInSecond(7);
 	}
 
 	// Các hàm dùng chung
