@@ -339,7 +339,20 @@ public class T13_JavascriptExecutor {
 	@Test
 	public void TC03_JavascriptExecutor_HTML5_pexels() {
 		driver.get("https://www.pexels.com/vi-vn/join-contributor/");
-		sleepInSecond(4);
+		highlightElement("(//span[contains(text(),'chia sẻ nội dung')])[1]");
+		clickToElementByJS("(//span[contains(text(),'chia sẻ nội dung')])[1]");
+		sleepInSecond(9);
+		waitToJQueryAndJSLoadedSuccess(driver);
+		String messaagefName=getElement(driver,"//input[@placeholder='Tên']/following::p[1]").getText();
+		Assert.assertEquals(messaagefName, "Đây là trường bắt buộc.");
+		String messaagelName=getElement(driver,"//input[@placeholder='Họ']/following::p[1]").getText();
+		Assert.assertEquals(messaagelName, "Đây là trường bắt buộc.");
+		String messaageEmail=getElement(driver,"//input[@placeholder='Email']/following::p[1]").getText();
+		Assert.assertEquals(messaageEmail, "Đây là trường bắt buộc.");
+		String messaagePass=getElement(driver,"//input[@placeholder='Mật khẩu']/following::p[1]").getText();
+		Assert.assertEquals(messaagePass, "Đây là trường bắt buộc.");
+		sleepInSecond(9);
+		waitToJQueryAndJSLoadedSuccess(driver);
 		highlightElement("//span[text()='Đăng nhập']");
 		clickToElementByJS("//span[text()='Đăng nhập']");
 		waitToJQueryAndJSLoadedSuccess(driver);
