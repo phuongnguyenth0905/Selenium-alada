@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Projet Name">
+  <test name="Run on Chrome">
+  <groups>
+  <run>
+ <!-- <include name="product"></include> -->
+  <exclude name="user"></exclude>
+  </run>
+  </groups>
+    <classes>
+      <class name="testng.T01_Annotation"/>
+      <class name="testng.T02_Group"/>
+      <class name="testng.T09_Depency"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
