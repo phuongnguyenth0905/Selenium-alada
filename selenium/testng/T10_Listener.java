@@ -22,7 +22,7 @@ public class T10_Listener {
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.manage().window().maximize();
-		// driver.get("https://demo.nopcommerce.com/");
+		 driver.get("https://demo.nopcommerce.com/");
 
 	}
 
