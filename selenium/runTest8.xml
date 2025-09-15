@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Projet Name">
+	<test name="Run on Chrome">
+		<parameter name="browser" value="chome" />
+		<classes>
+
+			<class name="testng.T08_Loop" />
+		</classes>
+
+	</test>
+	<!-- Test -->
+
+</suite> <!--
+Suite -->

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Projet Name">
+<listeners>
+<listener class-name="testng.ScreenshotListener"/>
+</listeners>
+	<test name="Run on Chrome">
+		<parameter name="browser" value="chome" />
+		<classes>
+			<class name="testng.T10_Listener" />
+		</classes>
+
+	</test>
+	<!-- Test -->
+
+</suite> <!--
+Suite -->
